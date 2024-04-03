@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p class="out"></p>
+  </body>
+  <script>
+    let accounts = [
+      { userName: "user1", password: "pass1" },
+      { userName: "user2", password: "pass2" },
+      { userName: "user3", password: "pass 3" },
+      { userName: "user4", password: "pass4" },
+    ];
+
+    function hasSpace(str) {
+      return str.includes(" ");
+    }
+
+    let index = accounts.findIndex((account) => hasSpace(account.password));
+    let output = document.querySelector(".out");
+    if (index !== -1) {
+      output.innerHTML = `co dau cach trong mat khau cua tai khoan o vi tri ${index}`;
+    } else {
+      output.innerHTML = `tat ca hop le`;
+    }
+
+  </script>
+</html>

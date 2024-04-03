@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function allPositiveNumbers(arr, num) {
+      return arr.every((item) => item % num === 0);
+    }
+
+    let arr = [1,4,6,8,10];
+    let num = 2;
+    console.log(allPositiveNumbers(arr, num));
+  </script>
+</html>

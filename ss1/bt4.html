@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="out"></p>
+</body>
+    <script>
+        let books = [
+            {
+                id:1,
+                name:"abcd",
+            },
+            {
+                id:2,
+                name:"aaaa",
+            },
+            {
+                id:3,
+                name:"bbbb",
+            },
+            {
+                id:4,
+                name:"cccc",
+            },
+        ]
+        let search = +prompt("nhap id muon tim");
+        let index = books.findIndex((book) =>{
+            return search === book.id;
+        });
+        let output = document.querySelector(".out");
+        output.innerHTML = books[index].name;
+
+    </script>
+</html>

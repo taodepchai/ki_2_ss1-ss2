@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const numbers = [1, 2, 3, 4, 5];
+    function sum1(numbers) {
+      return numbers.reduce((sum, num) => sum + num, 0);
+    }
+
+    console.log(sum1(numbers));
+    function sum2(numbers) {
+      let sum = 0;
+      numbers.forEach((number) => {
+        sum += number;
+      });
+      return sum;
+    }
+
+    console.log(sum2(numbers));
+  </script>
+</html>

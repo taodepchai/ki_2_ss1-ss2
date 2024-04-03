@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let number1 = [
+      { id: 1, number: 25 },
+      { id: 1, number: 30 },
+      { id: 1, number: 50 },
+    ];
+    number1.forEach((number1) => {
+      if (number1.number < 30) number1.number += 10;
+      if (number1.number > 40) number1.number -= 10;
+    });
+    console.log(number1);
+  </script>
+</html>

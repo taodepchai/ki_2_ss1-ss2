@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      .container {
+        align-items: center;
+        width: 400px;
+        height: 100%;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 1px 1px 1px 1px gray;
+      }
+      .todoItem {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .todoList {
+        list-style-type: none;
+        padding: 0;
+      }
+      .container #inputTodo {
+        width: 200px;
+        height: 25px;
+      }
+      .container button{
+        border: none;
+        border-radius: 8px;
+      }
+      .container #addBtn {
+        
+        
+        color: white;
+        width: 70px;
+        height: 35px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" name="" id="inputTodo" />
+      <button id="addBtn">Thêm</button>
+      <ul class="todoList"></ul>
+      <p id="completionPercentage"></p>
+    </div>
+
+    <script>
+      let todoList = [];
+      let addBtn = document.getElementById("addBtn");
+      let inputTodo = document.getElementById("inputTodo");
+      let todoListContainer = document.querySelector(".todoList");
+      let completionPercentage = document.getElementById(
+        "completionPercentage"
+      );
+
+      addBtn.addEventListener("click", () => {
+        let todoItem = inputTodo.value.trim();
+        if (todoItem !== "") {
+          todoList.push({ task: todoItem, completed: false });
+          renderTodoList();
+          inputTodo.value = "";
+        }
+      });
+
+      function renderTodoList() {
+        todoListContainer.innerHTML = "";
+        todoList.forEach((item, index) => {
+          let li = document.createElement("li");
+          li.classList.add("todoItem");
+          let checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.checked = item.completed;
+          checkbox.addEventListener("change", () => {
+            item.completed = checkbox.checked;
+            updateCompletionPercentage();
+          });
+          let label = document.createElement("label");
+          label.textContent = item.task;
+          let button = document.createElement("button");
+          button.innerHTML =
+            '<i class="fas fa-trash" style="color: #ff0000"></i>';
+          button.addEventListener("click", () => {
+            deleteTodoItem(index);
+          });
+          li.appendChild(document.createElement("br"));
+          todoListContainer.appendChild(li);
+          li.appendChild(checkbox);
+          li.appendChild(label);
+          li.appendChild(button);
+          todoListContainer.appendChild(li);
+        });
+        updateCompletionPercentage();
+      }
+
+      function deleteTodoItem(index) {
+        todoList.splice(index, 1);
+        renderTodoList();
+      }
+
+      function updateCompletionPercentage() {
+        let completedCount = todoList.filter((item) => item.completed).length;
+        let totalTasks = todoList.length;
+        let percentage =
+          totalTasks === 0
+            ? 0
+            : Math.round((completedCount / totalTasks) * 100);
+        completionPercentage.textContent = `Hoàn thành: ${percentage}%`;
+      }
+
+      document.addEventListener("DOMContentLoaded", renderTodoList);
+    </script>
+
+    <script
+      src="https://kit.fontawesome.com/bd9aef7112.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
